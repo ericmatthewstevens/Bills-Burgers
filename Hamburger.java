@@ -53,18 +53,40 @@ public class Hamburger {
   }
 
   public double itemizehamburger() {
+    System.out.println("One order of " + name + " on a " + breadRollType + " with " + addition1Name + ", " + addition2Name + ", " + addition3Name + " and " + addition4Name);
     return price + (addition1Price + addition2Price + addition3Price + addition4Price);
   }
-
 
   /*Methods to calculate hamburger additions
   * - addHamburgerAddition1() [DONE], addHamburgerAddition2() [DONE], addHamburgerAddition3(), addHamburgerAddition4().
   * -- These four (4) methods do NOT return values.
   * 
+
   * Method invoked to print out itemizedd listing of the final hamburger with addons, if any, and total price.
   * - itemizehamburger().
   * -- Return type of double.
   * --- This includes the base price of the burger, plus any additional items.
   */
 
+}
+
+class DeluxeBurger extends Hamburger {
+
+  /**
+   * NO additional member variables
+   * 
+   * Constructor: 
+   * * No parameters
+   * * Instead, it wil create a deluxe burger with all fixings, with chips and a drink
+   * * Base price of $19.10.
+   */
+
+   public DeluxeBurger() {
+     super("Deluxe Burger", "Sausage & Bacon", 19.10, "White roll");
+   }
+
+  //  @Override
+  //  public void addHamburgerAddition1() {
+  //    name = name + " " + addition1Name;
+  //  }
 }
