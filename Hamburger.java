@@ -111,5 +111,32 @@ class DeluxeBurger extends Hamburger {
     double drink = 1.81;
     return ((chips + drink) + super.itemizehamburger());
   }
+
+  class HealthyBurger extends Hamburger {
+
+    private String healthyExtra1Name;
+    private double healthyExtra1Price;
+    private String healthyExtra2Name;
+    private double healthyExtra2Price;
+
+    HealthyBurger(String meat, double price) {
+      super("Healthy Burger", meat, price, "Wheat Roll");
+    }
+
+    public void addHealthyAddition1(String name, double price) {
+      name = name + " " + healthyExtra1Name;
+      price += healthyExtra1Price;
+    }
+
+    public void addHealthyAddition2(String name, double price) {
+      name = name + " " + healthyExtra2Name;
+      price += healthyExtra2Price;
+    }
+
+    @Override
+    public double itemizehamburger() {
+      return (super.itemizehamburger() + (healthyExtra1Price + healthyExtra2Price));
+    }
+  }
   
 }
