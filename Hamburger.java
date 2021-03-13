@@ -112,6 +112,8 @@ class DeluxeBurger extends Hamburger {
     return ((chips + drink) + super.itemizehamburger());
   }
 
+}
+
   class HealthyBurger extends Hamburger {
 
     private String healthyExtra1Name;
@@ -119,7 +121,7 @@ class DeluxeBurger extends Hamburger {
     private String healthyExtra2Name;
     private double healthyExtra2Price;
 
-    HealthyBurger(String meat, double price) {
+    public HealthyBurger(String meat, double price) {
       super("Healthy Burger", meat, price, "Wheat Roll");
     }
 
@@ -138,5 +140,3 @@ class DeluxeBurger extends Hamburger {
       return (super.itemizehamburger() + (healthyExtra1Price + healthyExtra2Price));
     }
   }
-  
-}
