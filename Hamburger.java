@@ -130,6 +130,8 @@ class DeluxeBurger extends Hamburger {
   public double itemizehamburger() {
     double chips = 2.75;
     double drink = 1.81;
+    double burgerPrice;
+
     return ((chips + drink) + super.itemizehamburger());
   }
 
@@ -146,20 +148,39 @@ class DeluxeBurger extends Hamburger {
       super("Healthy Burger", meat, price, "Wheat");
     }
 
-    public void addHealthyAddition1(String name, double price) {
-      name = name + " " + healthyExtra1Name;
-      price += healthyExtra1Price;
+    public void addHealthyAddition1(String healthyExtra1Name, double healthyExtra1Price) {
+      this.healthyExtra1Name = healthyExtra1Name;
+      this.healthyExtra1Price = healthyExtra1Price;
     }
 
-    public void addHealthyAddition2(String name, double price) {
-      name = name + " " + healthyExtra2Name;
-      price += healthyExtra2Price;
+    public void addHealthyAddition2(String healthyExtra2Name, double healthyExtra2Price) {
+      this.healthyExtra2Name = healthyExtra2Name;
+      this.healthyExtra2Price = healthyExtra2Price;
     }
 
     @Override
     public double itemizehamburger() {
-      double expectedTotalPrice = (super.itemizehamburger() + (healthyExtra1Price + healthyExtra2Price));
-      return expectedTotalPrice;
-    }
+      System.out.println(HealthyBurger() + " hamburger on a " + this.breadRollType + " roll." 
+      + " Base Price: $" + this.price);
+      if (this.addition1Name != null) {
+        burgerPrice += this.addition1Price;
+        System.out.println("Added " + this.addition1Name + " at $" + this.addition1Price + " extra.");
+      }
+      if (this.addition2Name != null) {
+        burgerPrice += this.addition2Price;
+        System.out.println("Added " + this.addition2Name + " at $" + this.addition2Price + " extra.");
+      }
+      if (this.addition3Name != null) {
+        burgerPrice += this.addition3Price;
+        System.out.println("Added " + this.addition3Name + " at $" + this.addition3Price + " extra.");
+      }
+      if (this.addition4Name != null) {
+        burgerPrice += this.addition4Price;
+        System.out.println("Added " + this.addition4Name + " at $" + this.addition4Price + " extra.");
+      }
+  
+      System.out.println("Total Price: $" + burgerPrice);
+      return price;
+      }
 
   }
