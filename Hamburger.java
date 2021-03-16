@@ -130,6 +130,7 @@ class DeluxeBurger extends Hamburger {
   public double itemizehamburger() {
     double chips = 2.75;
     double drink = 1.81;
+
     return ((chips + drink) + super.itemizehamburger());
   }
 
@@ -146,20 +147,32 @@ class DeluxeBurger extends Hamburger {
       super("Healthy Burger", meat, price, "Wheat");
     }
 
-    public void addHealthyAddition1(String name, double price) {
-      name = name + " " + healthyExtra1Name;
-      price += healthyExtra1Price;
+    public void addHealthyAddition1(String healthyExtra1Name, double healthyExtra1Price) {
+      this.healthyExtra1Name = healthyExtra1Name;
+      this.healthyExtra1Price = healthyExtra1Price;
     }
 
-    public void addHealthyAddition2(String name, double price) {
-      name = name + " " + healthyExtra2Name;
-      price += healthyExtra2Price;
+    public void addHealthyAddition2(String healthyExtra2Name, double healthyExtra2Price) {
+      this.healthyExtra2Name = healthyExtra2Name;
+      this.healthyExtra2Price = healthyExtra2Price;
     }
 
     @Override
     public double itemizehamburger() {
-      double expectedTotalPrice = (super.itemizehamburger() + (healthyExtra1Price + healthyExtra2Price));
-      return expectedTotalPrice;
+
+      double healthyBurgerPrice = 5.67;
+
+      System.out.println(getClass().getSimpleName() + " hamburger on a Wheat Roll." +  "\n" +
+      " Base Price: $" + healthyBurgerPrice);
+      if (this.healthyExtra1Name != null) {
+        healthyBurgerPrice += this.healthyExtra1Price;
+        System.out.println("Added " + this.healthyExtra1Name + " at $" + this.healthyExtra1Price + " extra.");
+      }
+      if (this.healthyExtra2Name != null) {
+        healthyBurgerPrice += this.healthyExtra2Price;
+        System.out.println("Added " + this.healthyExtra2Name + " at $" + this.healthyExtra2Price + " extra.");
+      }
+      return healthyBurgerPrice;
     }
 
   }
