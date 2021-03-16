@@ -53,29 +53,27 @@ public class Hamburger {
   }
 
   public double itemizehamburger() {
-    double burgerPrice = this.price;
+    double hamburgerPrice = this.price;
     
-    System.out.println(this.name + " hamburger on a " + this.breadRollType + " roll." 
-    + " Base Price: $" + this.price);
+    System.out.println(this.name + " hamburger on a " + this.breadRollType + " roll" 
+    + "with " + this.meat + " priced at $" + this.price);
     if (this.addition1Name != null) {
-      burgerPrice += this.addition1Price;
+      hamburgerPrice += this.addition1Price;
       System.out.println("Added " + this.addition1Name + " at $" + this.addition1Price + " extra.");
     }
     if (this.addition2Name != null) {
-      burgerPrice += this.addition2Price;
+      hamburgerPrice += this.addition2Price;
       System.out.println("Added " + this.addition2Name + " at $" + this.addition2Price + " extra.");
     }
     if (this.addition3Name != null) {
-      burgerPrice += this.addition3Price;
+      hamburgerPrice += this.addition3Price;
       System.out.println("Added " + this.addition3Name + " at $" + this.addition3Price + " extra.");
     }
     if (this.addition4Name != null) {
-      burgerPrice += this.addition4Price;
+      hamburgerPrice += this.addition4Price;
       System.out.println("Added " + this.addition4Name + " at $" + this.addition4Price + " extra.");
     }
-
-    System.out.println("Total Price: $" + burgerPrice);
-    return price;
+    return hamburgerPrice;
   }
 
   /*Methods to calculate hamburger additions
@@ -103,7 +101,9 @@ class DeluxeBurger extends Hamburger {
    */
 
    public DeluxeBurger() {
-     super("Cheese", "Sausage & Bacon", 14.54, "White");
+     super("Deluxe", "Sausage & Bacon", 14.54, "White");
+     super.addHamburgerAddition1("Chips", 2.75);
+     super.addHamburgerAddition2("Drink", 1.81);
    }
 
    @Override
@@ -126,14 +126,6 @@ class DeluxeBurger extends Hamburger {
     System.out.println("Additional items cannot be added to a deluxe burger.");
   }
 
-  @Override
-  public double itemizehamburger() {
-    double chips = 2.75;
-    double drink = 1.81;
-
-    return ((chips + drink) + super.itemizehamburger());
-  }
-
 }
 
   class HealthyBurger extends Hamburger {
@@ -144,35 +136,32 @@ class DeluxeBurger extends Hamburger {
     private double healthyExtra2Price;
 
     public HealthyBurger(String meat, double price) {
-      super("Healthy Burger", meat, price, "Wheat");
+      super("Healthy", meat, price, "Wheat");
     }
 
-    public void addHealthyAddition1(String healthyExtra1Name, double healthyExtra1Price) {
-      this.healthyExtra1Name = healthyExtra1Name;
-      this.healthyExtra1Price = healthyExtra1Price;
+    public void addHealthyAddition1(String name, double price) {
+      this.healthyExtra1Name = name;
+      this.healthyExtra1Price = price;
     }
 
-    public void addHealthyAddition2(String healthyExtra2Name, double healthyExtra2Price) {
+    public void addHealthyAddition2(String name, double price) {
       this.healthyExtra2Name = healthyExtra2Name;
       this.healthyExtra2Price = healthyExtra2Price;
     }
-
+    
     @Override
     public double itemizehamburger() {
-
-      double healthyBurgerPrice = 5.67;
-
-      System.out.println(getClass().getSimpleName() + " hamburger on a Wheat Roll." +  "\n" +
-      " Base Price: $" + healthyBurgerPrice);
+      double hamburgerPrice  = super.itemizehamburger();
+      
       if (this.healthyExtra1Name != null) {
-        healthyBurgerPrice += this.healthyExtra1Price;
+        hamburgerPrice += this.healthyExtra1Price;
         System.out.println("Added " + this.healthyExtra1Name + " at $" + this.healthyExtra1Price + " extra.");
       }
       if (this.healthyExtra2Name != null) {
-        healthyBurgerPrice += this.healthyExtra2Price;
+        hamburgerPrice += this.healthyExtra2Price;
         System.out.println("Added " + this.healthyExtra2Name + " at $" + this.healthyExtra2Price + " extra.");
       }
-      return healthyBurgerPrice;
+      return hamburgerPrice;
     }
 
   }
